@@ -442,6 +442,83 @@ a {
   border-color: var(--magenta);
 }
 
+/* Case study expanders. Native <details>/<summary>, so the content is in the
+   DOM and readable with JavaScript disabled; the summary is keyboard focusable. */
+
+.case-study {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 0.85rem;
+}
+
+.case-study summary {
+  list-style: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--gold-light);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 6px;
+}
+
+.case-study summary::-webkit-details-marker {
+  display: none;
+}
+
+.case-study summary::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  flex: none;
+  border-right: 2px solid var(--gold);
+  border-bottom: 2px solid var(--gold);
+  transform: rotate(-45deg);
+  transition: transform 0.25s ease;
+}
+
+.case-study[open ] summary::before {
+  transform: rotate(45deg);
+}
+
+.case-study summary:hover {
+  color: #ffffff;
+}
+
+.case-study summary:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.case-body {
+  display: grid;
+  gap: 0.95rem;
+  padding-top: 0.95rem;
+}
+
+.case-part h4 {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  margin-bottom: 0.3rem;
+}
+
+.case-part p {
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.case-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.04);
+}
+
 /* Building in Public */
 
 .building-card {
@@ -565,7 +642,8 @@ a {
   }
 
   .btn,
-  .skill-list li {
+  .skill-list li,
+  .case-study summary::before {
     transition: none;
   }
 }

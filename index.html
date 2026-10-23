@@ -123,12 +123,34 @@
 
         <article class="card project-card tilt">
           <h3>EvidenceRAG</h3>
-          <p>Document Q&amp;A that answers only from retrieved citations, with a guaranteed refusal when evidence is missing and published eval metrics.</p>
+          <p>Document Q&amp;A that answers only from retrieved citations, with a guaranteed refusal when evidence is missing and published eval metrics. Citation precision 0.99 on a published golden set.</p>
           <ul class="tag-list" aria-label="Technologies">
             <li>RAG</li>
             <li>Python</li>
             <li>LLM Evaluation</li>
           </ul>
+          <details class="case-study">
+            <summary>Case study</summary>
+            <div class="case-body">
+              <div class="case-part">
+                <h4>The gap</h4>
+                <p>AI search tools generate an answer first and attach citations after; independent research (Tow Center, 2025) found over 60% of AI search answers were wrong or unsupported, and fabricated citations are common. A citation you cannot trace is decoration.</p>
+              </div>
+              <div class="case-part">
+                <h4>What it does</h4>
+                <p>Answers questions over a document corpus only from retrieved citations. If the evidence is not there, it refuses instead of guessing.</p>
+              </div>
+              <div class="case-part">
+                <h4>What I built</h4>
+                <p>Hybrid dense + BM25 retrieval, cross-encoder re-ranking, extractive answers with document, page, and character-offset citations, a guaranteed insufficient-evidence refusal, and a published golden-set evaluation (citation precision 0.99).</p>
+              </div>
+              <img class="case-img" src="evidencerag-pipeline.png" alt="EvidenceRAG pipeline diagram" loading="lazy">
+              <div class="case-part">
+                <h4>Tech</h4>
+                <p>Python, RAG, cross-encoder re-ranking, Gradio on Hugging Face.</p>
+              </div>
+            </div>
+          </details>
           <div class="card-links">
             <a href="https://Gowtamy-evidencerag.hf.space" target="_blank" rel="noopener">Live Demo</a>
             <a href="https://github.com/gowtamyreddy/evidencerag" target="_blank" rel="noopener">Code</a>
@@ -143,6 +165,27 @@
             <li>FastAPI</li>
             <li>Agent Observability</li>
           </ul>
+          <details class="case-study">
+            <summary>Case study</summary>
+            <div class="case-body">
+              <div class="case-part">
+                <h4>The gap</h4>
+                <p>Agent runs are black boxes. When an output changes, you cannot tell which step caused it, what it cost, or replay just that step.</p>
+              </div>
+              <div class="case-part">
+                <h4>What it does</h4>
+                <p>Lets you fork any recorded agent run from any step, replay it with recorded tool results, diff the outcome, and see cost per successful task.</p>
+              </div>
+              <div class="case-part">
+                <h4>What I built</h4>
+                <p>One-decorator instrumentation with typed spans stored in a single SQLite file, fork and replay from step N, side-by-side outcome diffs, cost per successful task with budget ceilings, and one-click export of a trace as a pinned pytest test. The live demo runs real EvidenceRAG questions.</p>
+              </div>
+              <div class="case-part">
+                <h4>Tech</h4>
+                <p>Python, FastAPI, SQLite, agent observability.</p>
+              </div>
+            </div>
+          </details>
           <div class="card-links">
             <a href="https://Gowtamy-forkwise.hf.space" target="_blank" rel="noopener">Live Demo</a>
             <a href="https://github.com/gowtamyreddy/ForkWise" target="_blank" rel="noopener">Code</a>
@@ -157,6 +200,27 @@
             <li>Python</li>
             <li>RAG</li>
           </ul>
+          <details class="case-study">
+            <summary>Case study</summary>
+            <div class="case-body">
+              <div class="case-part">
+                <h4>The gap</h4>
+                <p>Teams change chunking, models, or re-ranking and then guess whether retrieval got better. A single pass-rate number hides what actually broke.</p>
+              </div>
+              <div class="case-part">
+                <h4>What it does</h4>
+                <p>Compares two versions of a retrieval system on a golden set and returns a ship or do-not-ship verdict.</p>
+              </div>
+              <div class="case-part">
+                <h4>What I built</h4>
+                <p>Failure classification into five categories (pass, right source wrong sentence, wrong source, answered but should refuse, refused but should answer), a verdict that separates regressions a change caused from pre-existing failures, case-by-case version A vs B diffs, and per-case latency.</p>
+              </div>
+              <div class="case-part">
+                <h4>Tech</h4>
+                <p>Python, LLM evaluation, RAG.</p>
+              </div>
+            </div>
+          </details>
           <div class="card-links">
             <a href="https://github.com/gowtamyreddy/TrustLens" target="_blank" rel="noopener">Code</a>
           </div>
@@ -170,6 +234,19 @@
             <li>Python</li>
             <li>Multimodal</li>
           </ul>
+          <details class="case-study">
+            <summary>Case study</summary>
+            <div class="case-body">
+              <div class="case-part">
+                <h4>What it does</h4>
+                <p>A multimodal generative AI app bringing chat, image, and document assistance into one place.</p>
+              </div>
+              <div class="case-part">
+                <h4>Tech</h4>
+                <p>Generative AI, Python, Multimodal.</p>
+              </div>
+            </div>
+          </details>
           <div class="card-links">
             <a href="https://github.com/gowtamyreddy" target="_blank" rel="noopener">GitHub Profile</a>
           </div>
@@ -183,6 +260,19 @@
             <li>Computer Vision</li>
             <li>Team Build</li>
           </ul>
+          <details class="case-study">
+            <summary>Case study</summary>
+            <div class="case-body">
+              <div class="case-part">
+                <h4>The gap</h4>
+                <p>Shoppers waste time hunting aisles for one product.</p>
+              </div>
+              <div class="case-part">
+                <h4>What we built</h4>
+                <p>In a 3-hour hackathon sprint, a four-person team built a product finder: snap or search a product and get pointed to it in store.</p>
+              </div>
+            </div>
+          </details>
           <div class="card-links">
             <a href="https://github.com/gowtamyreddy/WhereZit" target="_blank" rel="noopener">Code</a>
           </div>
