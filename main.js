@@ -1,7 +1,10 @@
 /* Portfolio interactions:
    1. Three.js particle network hero (nodes + connecting lines) that reacts to the mouse.
    2. Subtle 3D tilt on project cards.
-   Everything degrades gracefully: no WebGL or no Three.js means the CSS fallback shows. */
+   3. Gentle scroll reveal for sections and cards (IntersectionObserver).
+   Everything degrades gracefully: no WebGL or no Three.js means the CSS fallback shows,
+   and the reveal hidden state is applied by this script only, so content stays fully
+   visible with JavaScript disabled or when reduced motion is preferred. */
 
 (function () {
   "use strict";
@@ -219,6 +222,42 @@
     }
   }
 
+  /* ---------- Scroll reveal ---------- */
+
+  function initReveal() {
+    /* Reduced motion (or no IntersectionObserver): leave everything visible. */
+    if (reduceMotion) return;
+    if (!("IntersectionObserver" in window)) return;
+
+    var targets = document.querySelectorAll(
+      ".section-title, .section-intro, .card, .skill-list, .contact-links"
+    );
+    if (!targets.length) return;
+
+    targets.forEach(function (el) {
+      el.classList.add("reveal-pending");
+    });
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var el = entry.target;
+        el.classList.add("reveal-visible");
+        el.classList.remove("reveal-pending");
+        observer.unobserve(el);
+        /* Clean up after the animation so card tilt transforms stay snappy. */
+        setTimeout(function () {
+          el.classList.remove("reveal-visible");
+        }, 850);
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+
+    targets.forEach(function (el) {
+      observer.observe(el);
+    });
+  }
+
   initTilt();
   initHero();
+  initReveal();
 })();

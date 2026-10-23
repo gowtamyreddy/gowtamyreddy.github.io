@@ -151,6 +151,29 @@ a {
   pointer-events: auto;
 }
 
+/* Circular GitHub avatar with a gold ring and a soft magenta glow.
+   The frame carries a solid background so a failed image never breaks layout. */
+.hero-avatar {
+  width: 132px;
+  height: 132px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--navy-700);
+  border: 3px solid var(--gold);
+  box-shadow:
+    0 0 0 5px rgba(217, 164, 65, 0.18),
+    0 0 36px rgba(194, 51, 158, 0.55),
+    0 14px 30px rgba(0, 0, 0, 0.45);
+  margin-bottom: 1.7rem;
+}
+
+.hero-avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .hero-eyebrow {
   color: var(--gold-light);
   text-transform: uppercase;
@@ -379,13 +402,31 @@ a {
 
 .project-card p {
   color: var(--text-dim);
-  flex-grow: 1;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  list-style: none;
+}
+
+.tag-list li {
+  background: rgba(240, 200, 104, 0.08);
+  border: 1px solid rgba(217, 164, 65, 0.35);
+  color: var(--gold-light);
+  padding: 0.18rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
 }
 
 .card-links {
   display: flex;
   gap: 1.1rem;
   flex-wrap: wrap;
+  margin-top: auto;
+  padding-top: 0.2rem;
 }
 
 .card-links a {
@@ -399,6 +440,35 @@ a {
 .card-links a:focus {
   color: #ffffff;
   border-color: var(--magenta);
+}
+
+/* Building in Public */
+
+.building-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.2rem;
+}
+
+.building-card p {
+  color: var(--text-dim);
+  font-size: 1.08rem;
+  max-width: 46em;
+}
+
+/* Scroll reveal. The hidden state (.reveal-pending) is applied by main.js only,
+   so content is fully visible when JavaScript is disabled or motion is reduced. */
+
+.reveal-pending {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.7s ease, transform 0.7s ease;
 }
 
 /* Skills */
